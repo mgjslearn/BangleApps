@@ -1,0 +1,11 @@
+{ "id": "extimer",
+  "name": "ExTimer",
+ "src": "extimer.app.js",
+"icon": "extimer.img",
+  "description": "HW TIMER AND REMINDER",
+  "tags": "",
+  "storage": [
+    {"name":"extimer.app.js","url":"app.js"},
+    {"name":"extimer.img","url":"app-icon.js","evaluate":true}
+  ]
+}
