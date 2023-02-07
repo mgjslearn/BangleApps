@@ -1,69 +1,64 @@
 <html>
- <head>
-   <style>
-     body { margin:0;  }
-     svg {
-       display:block; position:absolute;
-       top:0%; left:0%; width:100%; height:100%;
-     }
-   </style>    
- </head>
- <body>
-  <svg viewBox="0 0 24 24">
-    <path fill="#000000" d="M12,2A7,7 0 0,0 5,9C5,11.38 6.19,13.47 8,14.74V17A1,1 0 0,0 9,18H15A1,1 0 0,0 16,17V14.74C17.81,13.47 19,11.38 19,9A7,7 0 0,0 12,2M9,21A1,1 0 0,0 10,22H14A1,1 0 0,0 15,21V20H9V21Z" />
-  </svg>
+<head>
   <script src="https://www.puck-js.com/puck.js"></script>
-  <script type="text/javascript">
-    // Get the actual curve inside the SVG. You could make differemt
-    // parts of a more complex SVG do different things...
-    var path = document.getElementsByTagName('path')[0];
-    // Make sure your mouse cursor turns into a hand when over it, and gray it out
-    path.style="cursor:pointer;fill:#BBB";
+</head>
+<body>
+<p>Click 'Add a Device' and toggle LED1 button to get current temperature
+on the right.</p>
+<div id="devices"></div>
+<button id="addDevice">Add a Device</button>
+<script>
+var _counter = 0;
 
-    // Called when we get a line of data - updates the light color
-    function onLine(v) {
-      console.log("Received: "+JSON.stringify(v));
-      path.style.fill="rgb("+Math.round(v*255)+",0,0)";
+document.getElementById("addDevice").addEventListener('click', event => {
+  Puck.connect(function(connection) {
+    if (connection===null) {
+      console.log("Connection failed!");
+      return;
     }
 
-    // When clicked, connect or disconnect
-    var connection;
-    path.addEventListener("click", function() {
-      if (connection) {
-        connection.close();
-        connection = undefined;
-      }
-      Puck.connect(function(c) {
-        if (!c) {
-          alert("Couldn't connect!");
-          return;
-        }
-        connection = c;
-        // Handle the data we get back, and call 'onLine'
-        // whenever we get a line
-        var buf = "";
-        connection.on("data", function(d) {
-          buf += d;
-          var i = buf.indexOf("\n");
-          while (i>=0) {
-            onLine(buf.substr(0,i));
-            buf = buf.substr(i+1);
-            i = buf.indexOf("\n");
-          }
+    // Work out a connection number so we can display it on the screen
+    // conId/conName are local variables (like connection) so there will
+    // be copies of these for each device that is connected to.
+    _counter++;    
+    var conId = _counter;
+    var conName = "dev"+conId;
+    // Add an HTML line for the device with a button
+    var div = document.createElement("div");
+    div.innerHTML =
+      `<div>Device ${conId}: <button id="btn${conId}">LED</button>&nbsp;<span id="${conName}" style="font-family: monospace;"></span>`;
+    document.getElementById("devices").append(div);
+    // reset the device and upload code to print the temperature every second (and reset when we disconnect)
+   
+    connection.write("\x03\x10reset();\n", function() {
+      setTimeout(function() {
+        connection.write("\x10setInterval(()=>Bluetooth.println(E.getTemperature()), 1000);NRF.on('disconnect',()=>reset());\n", function() {  
+          console.log(conName, "connected successfully");
         });
-        // First, reset Puck.js
-        connection.write("reset();\n", function() {
-          // Wait for it to reset itself
-          setTimeout(function() {
-            // Now tell it to write data on the current light level to Bluetooth
-            // 10 times a second. Also ensure that when disconnected, Puck.js
-            // resets so the setInterval doesn't keep draining battery.
-            connection.write("setInterval(function(){Bluetooth.println(Puck.light());},100);NRF.on('disconnect', function() {reset()});\n",
-              function() { console.log("Ready..."); });
-          }, 1500);
-        });
+      },500);
+    });
+    // When the button is pressed, send a command to toggle the LED
+    document.getElementById("btn"+conId).addEventListener('click', event => {
+      console.log(conName, "Sending LED.toggle()");
+      connection.write("\x10LED.toggle()\n");
+    });
+    // Handle data coming back
+    var line = "";
+   connection.write("Turn on!");
+    connection.on('data',function(d) {
+      // This code detects each new line coming in
+      line += d;
+      var lines = line.split("\n");
+      line = lines.pop();
+      // For each new line
+      lines.forEach(function(l) {
+        // display the line on the webpage
+        console.log(conName, "Got "+l);
+        document.getElementById(conName).innerText = l;
       });
     });
-  </script>
- </body>
+  });
+});
+</script>
+</body>
 </html>
