@@ -40,27 +40,7 @@
    <button onclick="Puck.write('LED1.set();\n');">ON!</button>
   <button onclick="Puck.write('LED1.reset();\n');">OFF!</button>
   
-  <script>
-    function executeLunchReminder() {
-       showAlert2(); 
-       Puck.write('LED1.set();\n');
-       Puck.write('E.showMessage("PLEASE EAT YOUR FRUITS!!","Well..")');   
-    }
-    
-    var notifCounter = 0;
-    function showAlert1() {
-      var myText = "HOMEWORK TIMER + REMINDER HAS BEEN SENT TO YOUR CHILD'S BANGLE WATCH";
-      alert(myText);
-      notifCounter = 1;
-    }
-    function showAlert2() {
-      var myText = "MEAL TIME REMINDER HAS BEEN SENT TO YOUR CHILD'S BANGLE WATCH";
-      alert(myText);
-      let drag;
-      notifCounter = 1; 
-    }
-   
-   </script>  
+  <script src="ParentsRemindPlatform.js"> </script>  
  
 
  
