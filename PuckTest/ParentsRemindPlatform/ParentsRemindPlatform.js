@@ -27,7 +27,7 @@
      
 
   var connection;
-document.getElementById("remind").addEventListener("click", function() {
+document.getElementById("reminder").addEventListener("click", function() {
   // disconnect if connected already
   if (connection) {
     connection.close();
@@ -53,8 +53,12 @@ document.getElementById("remind").addEventListener("click", function() {
   });
 });
 
+let result = BluetoothRemoteGATTCharacteristic[characteristic];
+result.service = 
+ result.uuid = 
 
     /****** 
+   
     property BluetoothRemoteGATTServer.connected;
     options =  {
       minInterval // min connection interval in milliseconds, 7.5 ms to 4 s
