@@ -17,38 +17,41 @@
       notifCounter = 1; 
     }
 
-  var NOTIFY_CODE = 
+  var BANGLE_CODE = `
  require("notify").show({id:1, title:"Test", body:"Some Alert"});
 require("notify").hide({id:1});
 require("notify").show({id:"msg", title:"Message", body:"Incoming Message"});
-require("notify").hide({id:"msg"});;
+require("notify").hide({id:"msg"});
+`;
 
+     
 
   var connection;
-  document.getElementById("remind").addEventListener("click", function() {
-    // disconnect if connected already
-    if (connection) {
-      connection.close();
-      connection = undefined;
-    }
-    // Connection
-    Puck.connect(function(c) {
-      if (!c) {
-        alert("Couldn't connect!");
-        return;
-      }
-      connection = c;
-      // reset the Bangle
-      connection.write("reset();\n", function() {
-        // waits to reset itself
-        setTimeout(function() {
-          // upload code
-          connection.write(NOTIFY_CODE);
-        }, 1000);
-      });
-    });
-  });
+document.getElementById("remind").addEventListener("click", function() {
+  // disconnect if connected already
+  if (connection) {
+    connection.close();
+    connection = undefined;
+  }
 
+  // Connect
+  Puck.connect(function(c) {
+    if (!c) {
+      alert("Couldn't connect!");
+      return;
+    }
+    connection = c;
+    // First, reset the Bangle
+    connection.write("reset();\n", function() {
+      // Wait for it to reset itself
+      setTimeout(function() {
+        // Now upload our code to it
+        connection.write(BANGLE_CODE);
+      }, 1000);
+    });
+
+  });
+});
 
 
     /****** 
