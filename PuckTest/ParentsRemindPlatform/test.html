@@ -38,6 +38,9 @@
         </div>   
   </div>                                  
  <script src="https://www.puck-js.com/puck.js"></script>  
+   <button onclick="Puck.write('LED1.set();\n');">ON!</button>
+  <button onclick="Puck.write('LED1.reset();\n');">OFF!</button>
+  
   <script>
     var notifCounter = 0;
     function showAlert1() {
@@ -50,16 +53,12 @@
       alert(myText);
       let drag;
       notifCounter = 1;
-      
-         Puck.write('LED1.reset();\n');
+      Puck.write('LED1.reset();\n');
    
     }
    
    </script>  
-  
  
-  <button onclick="Puck.write('LED1.set();\n');">ON!</button>
-  <button onclick="Puck.write('LED1.reset();\n');">OFF!</button>
   /***
   <script>
       var gatt;
