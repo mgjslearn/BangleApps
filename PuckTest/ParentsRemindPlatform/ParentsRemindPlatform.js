@@ -18,7 +18,10 @@
     }
 
   var BANGLE_CODE = `
-  E.showMessage("PLEASE EAT YOUR FRUITS!!","Well..");
+   require("notify").show({id:1, title:"Test", body:"Some Alert"});
+   require("notify").hide({id:1});
+   require("notify").show({id:"msg", title:"Message", body:"Incoming Message"});
+   require("notify").hide({id:"msg"});
 `;
 
      
