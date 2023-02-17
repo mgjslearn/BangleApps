@@ -51,7 +51,7 @@
       let drag;
       notifCounter = 1;
       if(notifCounter = 1) {
-         return characteristic.writeValue("LED1.set()\n");
+         Puck.write('LED1.reset();\n');
       }  
     }
    
