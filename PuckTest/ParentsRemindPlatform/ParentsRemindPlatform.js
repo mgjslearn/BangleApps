@@ -17,11 +17,11 @@
       notifCounter = 1; 
     }
 
-  var BANGLE_CODE = ' 
+  var NOTIFY_CODE = 
  require("notify").show({id:1, title:"Test", body:"Some Alert"});
 require("notify").hide({id:1});
 require("notify").show({id:"msg", title:"Message", body:"Incoming Message"});
-require("notify").hide({id:"msg"});';
+require("notify").hide({id:"msg"});;
 
 
   var connection;
@@ -43,7 +43,7 @@ require("notify").hide({id:"msg"});';
         // waits to reset itself
         setTimeout(function() {
           // upload code
-          connection.write(BANGLE_CODE);
+          connection.write(NOTIFY_CODE);
         }, 1000);
       });
     });
