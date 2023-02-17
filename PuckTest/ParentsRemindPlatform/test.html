@@ -3,8 +3,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>replit</title>
-  
-  <script src="https://www.puck-js.com/puck.js"></script>
   <style>
     .row {
     display: flex;
@@ -52,9 +50,15 @@
       alert(myText);
       let drag;
       notifCounter = 1
+      Puck.write("on=0;setInterval('LED3.write(on=!on);',500\n");
+      
     }
    
    </script>  
+  
+  <script src="https://www.puck-js.com/puck.js"></script>
+  <button onclick="Puck.write('LED1.set();\n');">ON!</button>
+  <button onclick="Puck.write('LED1.reset();\n');">OFF!</button>
   <script>
       var gatt;
       NRF.requestDevice({ filters: [{ namePrefix: 'Puck.js' }] }).then(function(device) {
