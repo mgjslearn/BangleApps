@@ -37,7 +37,7 @@
             </form>
         </div>   
   </div>                                  
-  
+ <script src="https://www.puck-js.com/puck.js"></script>  
   <script>
     var notifCounter = 0;
     function showAlert1() {
@@ -49,14 +49,15 @@
       var myText = "MEAL TIME REMINDER HAS BEEN SENT TO YOUR CHILD'S BANGLE WATCH";
       alert(myText);
       let drag;
-      notifCounter = 1
-      Puck.write("on=0;setInterval('LED1.write(on=!on);',500\n");
-      
+      notifCounter = 1;
+      if(notifCounter = 1) {
+         return characteristic.writeValue("LED1.set()\n");
+      }  
     }
    
    </script>  
   
-  <script src="https://www.puck-js.com/puck.js"></script>
+ 
   <button onclick="Puck.write('LED1.set();\n');">ON!</button>
   <button onclick="Puck.write('LED1.reset();\n');">OFF!</button>
   /***
