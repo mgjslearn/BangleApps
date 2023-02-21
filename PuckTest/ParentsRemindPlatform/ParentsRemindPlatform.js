@@ -2,7 +2,8 @@
   
     function executeLunchReminder() {
        showAlert2(); 
-       Puck.write('LED1.set();\n');  
+       Puck.write('LED1.set();\n'); 
+     E.showMessage("Hi", "yay");
     }
        
     function showAlert1() {
