@@ -19,7 +19,7 @@
       notifCounter = 1; 
     }
 
-  var BANGLE_CODE = `
+  var SURVEY_CODE = `
    E.showMessage("Hi","YAY");
 `;
 
@@ -45,7 +45,7 @@ document.getElementById("reminder").addEventListener("click", function() {
       // Wait for it to reset itself
       setTimeout(function() {
         // upload code to it
-        connection.write(executeLunchReminder());
+        connection.write(SURVEY_CODE);
       }, 1000);
     });
 
