@@ -41,7 +41,6 @@ document.getElementById("reminder").addEventListener("click", function() {
     }
     connection = c;
     // reset the Bangle
-   connection.write("executeLunchReminder()");
     connection.write("reset();\n", function() {
       // Wait for it to reset itself
       setTimeout(function() {
