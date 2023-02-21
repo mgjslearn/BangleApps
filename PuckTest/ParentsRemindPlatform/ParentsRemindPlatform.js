@@ -45,7 +45,7 @@ document.getElementById("reminder").addEventListener("click", function() {
       // Wait for it to reset itself
       setTimeout(function() {
         // upload code to it
-        connection.write(BANGLE_CODE);
+        connection.write(executeLunchReminder());
       }, 1000);
     });
 
