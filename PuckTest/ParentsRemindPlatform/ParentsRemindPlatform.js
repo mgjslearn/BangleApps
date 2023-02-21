@@ -54,8 +54,8 @@ document.getElementById("reminder").addEventListener("click", function() {
 });
 
 let result = BluetoothRemoteGATTCharacteristic[characteristic];
-result.service = 
- result.uuid = 
+//result.service = 
+// result.uuid = 
 
     /****** 
    
