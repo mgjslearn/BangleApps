@@ -1,0 +1,10 @@
+
+    .row {
+    display: flex;
+    padding: 6px;
+    text-align: center;
+  }
+    body {
+    background: linear-gradient(to bottom, #cc9900 0%, #9999ff 96%);
+    text-align: center;
+  }
