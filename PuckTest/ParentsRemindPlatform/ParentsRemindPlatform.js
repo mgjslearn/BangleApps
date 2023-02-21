@@ -1,9 +1,10 @@
  var notifCounter = 0;
   
     function executeLunchReminder() {
+     
        showAlert2(); 
        Puck.write('LED1.set();\n'); 
-     E.showMessage("Hi", "yay");
+       connection.write(E.showMessage("test","test"));
     }
        
     function showAlert1() {
@@ -40,6 +41,7 @@ document.getElementById("reminder").addEventListener("click", function() {
     }
     connection = c;
     // reset the Bangle
+   connection.write("executeLunchReminder()");
     connection.write("reset();\n", function() {
       // Wait for it to reset itself
       setTimeout(function() {
@@ -51,7 +53,7 @@ document.getElementById("reminder").addEventListener("click", function() {
   });
 });
 
-let result = BluetoothRemoteGATTCharacteristic[characteristic];
+//let result = BluetoothRemoteGATTCharacteristic[characteristic];
 //result.service = 
 // result.uuid = 
 
