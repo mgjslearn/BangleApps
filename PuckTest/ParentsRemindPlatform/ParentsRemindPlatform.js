@@ -18,10 +18,7 @@
     }
 
   var BANGLE_CODE = `
-   require("notify").show({id:1, title:"Test", body:"Some Alert"});
-   require("notify").hide({id:1});
-   require("notify").show({id:"msg", title:"Message", body:"Incoming Message"});
-   require("notify").hide({id:"msg"});
+   E.showMessage("Hi","YAY");
 `;
 
      
