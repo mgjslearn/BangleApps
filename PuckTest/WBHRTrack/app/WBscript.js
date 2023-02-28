@@ -13,9 +13,18 @@ async function BLEManager() {
         services: ['heart_rate', 'battery_service']
       }]
     });
+
+    const connectedDevice = await device.gatt.connect();
+    connectionStatus.textContent = "CONNECTED";
+
   }
   catch {
-    connectionStatus.textContent = "CANCELLED";
+    if (typeof device !== 'undefined') {
+      connectionStatus.textContent = "CONNECTION FAILED";
+    }
+    else {
+      connectionStatus.textContent = "CANCELLED"
+    }
   }
-
+ 
 }
