@@ -3,13 +3,19 @@ const deviceNameInput = document.getElementById("deviceNameInput");
 const connectionStatus = document.getElementById("connectionStatus");
 controlButton.addEventListener("click", BLEManager);
 async function BLEManager() {
-     // acceptAllDevices:true //scans for all devices
+
+  connectionStatus.textContent = "SEARCHING";
+
+  try {
     const device = await navigator.bluetooth.requestDevice({
-    filters: [{
-      name: Bangle4e3c.value, //scans for devices only named Bangle4e3c
-      services: ['heart_rate']
-    }],
-    optionalServices: ['battery_service']
-  });
- 
+      filters: [{
+        name: deviceNameInput.value,
+        services: ['heart_rate', 'battery_service']
+      }]
+    });
+  }
+  catch {
+    connectionStatus.textContent = "CANCELLED";
+  }
+
 }
