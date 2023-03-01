@@ -1,4 +1,22 @@
- var notifCounter = 0;
+const obj = JSON.parse('{
+	"dayTimeSurvey": [{
+			"question1": "did you eat your fruits today?",
+			"answer1": "yes"
+		},
+		{
+			"question1": "did you take your umbrella with you today?",
+			"answer1": "yes",
+			"type": "internet"
+		},
+		{
+			"question1": "did you finish your homework?",
+			"answer1": "yes",
+			"type": "internet"
+		}
+
+	]
+}');
+/**var notifCounter = 0;
   
     function executeLunchReminder() {
        Puck.write('LED1.set();\n'); 
