@@ -30,7 +30,37 @@
             <input type="submit" value="Submit">
           </form>
         </div>
-  </div>                                  
+      
+    
+  </div> 
+ <div class = "row">
+  <p id = "demo"> </p>
+ </div>
+ </div>
+ <script>
+       const surveyJson = ' {
+        "dayTimeSurvey": [{
+          "question1": "did you eat your fruits today?",
+          "answer1": "yes"
+         },
+         {
+          "question2": "did you take your umbrella with you today?",
+          "answer2": "yes",
+          "type": "internet"
+         },
+         {
+          "question3": "did you finish your homework?",
+          "answer3": "yes",
+          "type": "internet"
+         }
+
+        ]
+       }'  
+       const obj = JSON.parse(surveyJson);
+       document.getElementById("demo").innerHTML = obj.question1 + ", " + obj.answer1 + "Weather Prep Data: " + obj.question2 + ", " + obj.answer2 +  
+        "HW status data " + obj.question3 + ", " + obj.answer3;
+   </script>
+ 
    <button id="reminder" onclick = "executeLunchReminder()">SEND REMINDER!</button>
   <button onclick="Puck.write('LED1.reset();\n');">OFF!</button>
   
