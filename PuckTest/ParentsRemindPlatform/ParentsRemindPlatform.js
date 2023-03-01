@@ -18,7 +18,46 @@ var notifCounter = 0;
       let drag;
       notifCounter = 1; 
     }
+const surveyJson = ' {
 
+          "dayTimeSurvey": [{
+              "question1": "did you eat your fruits today?",
+              "answer1": "yes",
+              "scheduled": 430
+            },
+            {
+              "question1": "did you take your umbrella with you today?",
+              "answer1": "yes",
+              "type": "internet"
+            },
+            {
+              "question1": "did you finish your homework?",
+              "answer1": "yes",
+              "type": "internet"
+            }
+
+          ],
+          "EveningSurvey": [{
+              "question4": "ready for your club meeting?",
+              "answer4": "yes"
+            },
+            {
+              "question5": "do you have any exams tomorrow?",
+              "answer5": "yes",
+              "type": "internet"
+            },
+            {
+              "question6": "did you finish your homework?",
+              "answer6": "yes",
+              "type": "internet"
+            }
+
+          ]
+       }'  
+       const obj = JSON.parse(surveyJson);
+       document.getElementById("demo").innerHTML = obj.question1 + ", " + obj.answer1;
+
+/***
   var SURVEY_CODE = `
    E.showMessage("Hi","YAY");
 `;
@@ -51,6 +90,7 @@ document.getElementById("reminder").addEventListener("click", function() {
 
   });
 });
+***/
 
 //let result = BluetoothRemoteGATTCharacteristic[characteristic];
 //result.service = 
