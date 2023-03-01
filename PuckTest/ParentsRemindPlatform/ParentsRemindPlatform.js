@@ -55,7 +55,7 @@ const surveyJson = ' {
           ]
        }'  
        const obj = JSON.parse(surveyJson);
-       document.getElementById("demo").innerHTML = obj.question1 + ", " + obj.answer1;
+       document.getElementById("demo").innerHTML = obj.dayTimeSurvey.question1 + ", " + obj.dayTimeSurvey.answer1;
 
 /***
   var SURVEY_CODE = `
