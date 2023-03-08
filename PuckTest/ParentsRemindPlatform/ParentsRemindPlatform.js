@@ -56,9 +56,6 @@ var notifCounter = 0;
           ]
        }'  
 **/
-      const surveyJson = '{"name":"John", "age":30, "city":"New York"}'
-       const obj = JSON.parse(surveyJson);
-       document.getElementById("demo").innerHTML = obj.name + ", " + obj.age;
 
 /***
   var SURVEY_CODE = `
