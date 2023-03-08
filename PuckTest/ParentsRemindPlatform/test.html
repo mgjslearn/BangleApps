@@ -35,9 +35,20 @@
     
       </div> 
      <div class="row">
- 
+      <p id="demo"> </p>
      </div>
+ 
+  <script>
+const myJSON = '{"View Reminder?":"View", "Fruits eaten?":"yes", "Confirm?": "Yes"}';
+const myObj = JSON.parse(myJSON);
 
+  
+let text = "";
+for (const x in myObj) {
+  text += x + ":  " + myObj[x] + " ";
+}
+document.getElementById("demo").innerHTML = text;
+ </script>
 
  
 
