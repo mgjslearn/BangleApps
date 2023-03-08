@@ -9,8 +9,8 @@
 			"type": "internet"
 		},
 		{
-			"question1": "did you finish your homework?",
-			"answer1": "yes",
+			"question2": "did you finish your homework?",
+			"answer2": "yes",
 			"type": "internet"
 		}
 
