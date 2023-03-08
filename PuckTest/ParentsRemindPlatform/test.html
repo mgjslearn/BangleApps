@@ -13,9 +13,15 @@
       <h1> The Parent Reminder website</h1>
       <h3> Click the default reminders or send your custom one!</h3>
 
+ <script>
+   const surveyJson = '{"name":"John", "age":30, "city":"New York"}'
+       const obj = JSON.parse(surveyJson);
+       document.getElementById("demo").innerHTML = obj.name + ", " + obj.age;
+
+ </script>
  
 <div class="row">
- <p id = "demo"> </p>
+ <p id ="demo"> </p>
  </div>
 
    <button id="reminder" onclick = "executeLunchReminder()">SEND REMINDER!</button>
