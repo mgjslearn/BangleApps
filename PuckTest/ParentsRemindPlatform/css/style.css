@@ -27,3 +27,14 @@ body {
     font-size: 30px;
     font-color: #cc9900;
   }
+#demo {
+    
+    width: 350px;
+    height: 200px;
+    padding: 50px;
+    text-align: center;
+    background-color: gray;
+    font-size: 30px;
+    font-color: #cc9900;
+ 
+}
