@@ -18,7 +18,8 @@ var notifCounter = 0;
       let drag;
       notifCounter = 1; 
     }
-const surveyJson = ' {
+
+/**'{
 
           "dayTimeSurvey": [{
               "question1": "did you eat your fruits today?",
@@ -54,8 +55,10 @@ const surveyJson = ' {
 
           ]
        }'  
+**/
+      const surveyJson = '{"name":"John", "age":30, "city":"New York"}'
        const obj = JSON.parse(surveyJson);
-       document.getElementById("demo").innerHTML = obj.question1 + ", " + obj.answer1;
+       document.getElementById("demo").innerHTML = obj.name + ", " + obj.age;
 
 /***
   var SURVEY_CODE = `
