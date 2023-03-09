@@ -42,7 +42,7 @@
         var text = document.getElementById("mytext").value;
         // build the app's text using a templated String
         var app = `
-var txt = ${JSON.stringify(text)};
+var txt = ${"New Reminder: " + JSON.stringify(text)};
 g.clear(1);
 g.setFontAlign(0,0);
 g.setFont("6x8");
