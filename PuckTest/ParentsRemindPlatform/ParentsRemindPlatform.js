@@ -18,6 +18,176 @@ var notifCounter = 0;
       notifCounter = 1; 
     }
 
+ <script>
+
+const myJSON = '{"View Reminder?":"View", "Fruits eaten?":"yes", "Confirm?": "No"}';
+const myObj = JSON.parse(myJSON);
+
+  
+let text = "";
+for (const x in myObj) {
+  text += x + ":  " + myObj[x] + " ";
+}
+
+    /***
+    var Layout = require("Layout");
+let drag;
+const answers = [];
+let answers0 = "Snoozed";
+let answers1 = "No";
+let answers2 = "Confirmed";
+
+
+
+const states = {
+  init: 1, // initial survey screen
+  lunch: 2, // lunch
+  pleaseRemember: 3, // remember 
+  YayBye: 4, // yay farewell
+  confirm: 5
+};
+
+
+var layout = new Layout( {
+    type:"v", c: [
+      {type:"txt", font:"6x8:1",pad:4, label:"View Parent Survey?", id:"label" },
+      {type:"btn",font:"6x8:1", label:"View",pad:5, cb:()=> lunchReminder(), cbl: l=>print("One long press")},
+    {type:"btn",font:"6x8:1",label:"Snooze",pad:4, cb:()=> setTimeout('', 1000), cbl: l=>print("long press to return")},
+    ]
+  });
+
+
+function setLabel(x) {
+  layout.label.label = x;
+  layout.render();
+}
+g.clear();
+layout.render();
+
+function SnoozeFunc() {
+  E.showMessage("Reminder Snoozed!");
+ //setTimeout(introPage(), 1000);
+}
+
+
+function introPage() {
+  g.clear();
+  var layout = new Layout( {
+  type:"v", c: [
+      {type:"btn",font:"6x8:2", label:"View",pad:6, cb:()=> lunchReminder(), cbl: l=>print("One long press")},
+    {type:"txt", font:"6x8:1.5",pad:4, label:"View Parent Survey?", id:"label" },
+    {type:"btn",font:"6x8:2",label:"Snooze",pad:4, cb:()=> SnoozeFunc(), cbl: l=>print("long press to return")},
+]});
+g.clear();
+layout.render();
+}
+
+introPage();
+
+function lunchReminder() {
+  answers0 = "View";
+  g.clear();
+  var layout = new Layout( {
+  type:"v", c: [
+      {type:"btn",font:"6x8:2", label:"Yes",pad:6, cb:()=> YesconfirmScreen(), cbl: l=>print("One long press")},
+    {type:"txt", font:"6x8:2",pad:4, label:"Fruits eaten?", id:"label" },
+    {type:"btn",font:"6x8:2",label:"No",pad:4, cb:()=> NoconfirmScreen(), cbl: l=>print("long press to return")},
+]});
+g.clear();
+layout.render();
+}
+
+
+function NoconfirmScreen() {
+  answers1 = "No";
+  state = states.confirm;
+
+  if(state == states.confirm) {
+  E.showMessage("Confirm No?","Swipe up/down > confirm + right/left > back"); 
+      Bangle.on("drag", e => {
+      if (!drag) { // start dragging
+        drag = {x: e.x, y: e.y};
+      } else if (!e.b) { // released
+        const dx = e.x-drag.x, dy = e.y-drag.y;
+        drag = null;
+        if (Math.abs(dy)>Math.abs(dx)+10) {
+          // vertical up
+          E.showMessage("DONE!","End of Survey");
+         answers[2] = "Confirmed Answer";
+        }  
+        else if (Math.abs(dx)>Math.abs(dy)-10) {
+          // vertical down
+           lunchReminder();
+        } 
+       
+       
+       
+      }
+  }
+                
+);
+      
+  } 
+
+}
+
+function YesconfirmScreen() {
+
+  state = states.confirm;
+answers1 = "Yes";
+  if(state == states.confirm) {
+  E.showMessage("Confirm Y?","Swipe up/down > confirm + right/left > back"); 
+      Bangle.on("drag", e => {
+      if (!drag) { // start dragging
+        drag = {x: e.x, y: e.y};
+      } else if (!e.b) { // released
+        const dx = e.x-drag.x, dy = e.y-drag.y;
+        drag = null;
+        if (Math.abs(dy)>Math.abs(dx)+10) {
+          // vertical up
+          E.showMessage("DONE!","End of Survey");
+          answers2 = "Confirmed Answer";
+        }  
+        else if (Math.abs(dx)>Math.abs(dy)-10) {
+          // vertical down
+           lunchReminder();
+        } 
+       
+       
+       
+      }
+  }
+                
+);
+      
+  } 
+ 
+}
+
+const myJSON = '{"q1": "View Survey", "q2": "Fruits eaten?","q3": "Confirm Answer?"}';
+const qJSON= JSON.parse(myJSON);
+
+const answersJSON = JSON.stringify(answers);
+
+ 
+let text = "";
+answers[0] = answers0;
+answers[1] = answers1;
+answers[2] = answers2;
+    const aJSON = JSON.parse(answersJSON);
+  
+let text = "";
+for (const x in qJSON) {
+  text += x + "Question:  " + myObj[x] + " ";
+}
+    for (const x in aJSON) {
+  text += x + "Answer:  " + aJSON[x] + " ";
+}
+ ****/
+document.getElementById("demo").innerHTML = text;
+
+  
+ </script>
 
 
 
