@@ -18,7 +18,6 @@ var notifCounter = 0;
       notifCounter = 1; 
     }
 
- <script>
 
 const myJSON = '{"View Reminder?":"View", "Fruits eaten?":"yes", "Confirm?": "No"}';
 const myObj = JSON.parse(myJSON);
@@ -186,8 +185,6 @@ for (const x in qJSON) {
  ****/
 document.getElementById("demo").innerHTML = text;
 
-  
- </script>
 
 
 
