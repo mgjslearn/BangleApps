@@ -46,6 +46,18 @@
   
   
   <script src="../../core/lib/customize.js"></script>
+ 
+<script>
+const myJSON = '{"View Reminder?":"View", "Fruits eaten?":"yes", "Confirm?": "No"}';
+const myObj = JSON.parse(myJSON);
+
+  
+let text = "";
+for (const x in myObj) {
+  text += x + ":  " + myObj[x] + " ";
+}
+document.getElementById("demo").innerHTML = text;
+ </script>
  <!--
   <script>
    //send the custom reminder survey text to watch
