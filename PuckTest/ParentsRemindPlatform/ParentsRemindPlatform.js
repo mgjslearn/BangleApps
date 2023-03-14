@@ -3,7 +3,6 @@ var notifCounter = 0;
   
     function executeLunchReminder() {
        Puck.write('LED1.set();\n'); 
-       connection.write(E.showMessage("test","test"));
        showAlert2(); 
     }
        
