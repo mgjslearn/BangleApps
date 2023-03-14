@@ -19,15 +19,6 @@ var notifCounter = 0;
     }
 
 
-const myJSON = '{"View Reminder?":"View", "Fruits eaten?":"yes", "Confirm?": "No"}';
-const myObj = JSON.parse(myJSON);
-
-  
-let text = "";
-for (const x in myObj) {
-  text += x + ":  " + myObj[x] + " ";
-}
-
     /***
     var Layout = require("Layout");
 let drag;
@@ -183,7 +174,7 @@ for (const x in qJSON) {
   text += x + "Answer:  " + aJSON[x] + " ";
 }
  ****/
-document.getElementById("demo").innerHTML = text;
+
 
 
 
