@@ -1,3 +1,50 @@
+const surveyReminder = document.getElementbyId("customSurvey");
+const hourTime = document.getElementbyId("hour");
+const minsTime = document.getElementbyId("minute");
+
+
+  var connection;
+document.getElementById("upload").addEventListener("click", function() {
+  // disconnect if connected already
+  if (connection) {
+    connection.close();
+    connection = undefined;
+  }
+  
+ var BANGLE_CODE = `
+      Bangle.loadWidgets();
+      Bangle.drawWidgets();
+      require("sched").getAlarms();
+      require("sched").newDefaultAlarm();
+      require("sched").setAlarm("myalarm", {
+        msg: "${mess}",
+        t: ${time},
+        rp: true
+      });
+      require("sched").reload();
+      Bangle.buzz();
+      Bangle.setLCDPower(1);
+      `;
+  // Connect
+  Puck.connect(function(c) {
+    if (!c) {
+      alert("Couldn't connect!");
+      return;
+    }
+    connection = c;
+    // First, reset the Bangle
+    connection.write("reset();\n", function() {
+      // Wait for it to reset itself
+      setTimeout(function() {
+        // Now upload our code to it
+        connection.write(BANGLE_CODE);
+      }, 1000);
+    });
+
+  });
+});
+
+
 
 var notifCounter = 0;
   
