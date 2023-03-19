@@ -12,6 +12,7 @@ document.getElementById("upload").addEventListener("click", function() {
   }
 
   var BANGLE_CODE = '
+  E.showMessage("${message}", "hi");
 Bangle.buzz();
 Bangle.setLCDPower(1);
 ';
