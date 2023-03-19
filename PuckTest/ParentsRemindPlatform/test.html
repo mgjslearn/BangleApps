@@ -8,7 +8,34 @@
 </head>
 <script src="https://www.puck-js.com/puck.js"></script>  
 <script src="ParentsRemindPlatform.js"> </script>  
- 
+ <div class="content">
+        <h1>Parent Control</h1>
+        <div class="quad-col">
+            <div class="item-col">
+                <h2 class="col">Time: Hour</h2>
+                <textarea id="hour" class="box" placeholder="Hour" required></textarea>
+                <code> "<span id="hourValue">n/a</span>" </code>
+            </div>
+            <div class="item-col">
+                <h2 class="col">Time: Minute</h2>
+                <textarea id="minute" class="box" placeholder="Minute" required></textarea>
+                <code> "<span id="minValue">n/a</span>" </code>
+            </div>
+            <div class="item-col">
+                <h2 class="col">Type of Reminders</h2>
+                <textarea id="action" class="box" placeholder="buzz, beep, LED,...?" required></textarea>
+            </div>
+            <div class="item-col">
+                <h2 class="col">Reminders</h2>
+                <textarea id="detail" class="box" placeholder="Enter your message"></textarea>
+            </div>
+            <div class="item-col">
+                <h2 class="col">Save</h2>
+                <button id="save">Yes</button>
+            </div>
+        </div>
+    </div>
+ <!--
 <body>
   <h1> The Parent Reminder website</h1>
       <h3> Click the default reminders or send your custom one!</h3>
@@ -33,6 +60,7 @@
         <p>Click <button id="upload" class="btn btn-primary">Upload</button></p>
     </div>
  </div>
+-->
   <!--
   <h2> Custom Time </h2>
     <div class="col-4">
