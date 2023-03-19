@@ -19,7 +19,6 @@ require("sched").getAlarms();
 require("sched").newDefaultAlarm();
   require("sched").setAlarm("myalarm", { // as an alarm
   msg : "${message}",
-  t : "${time}",
   rp:true
 });
 require("sched").reload();
