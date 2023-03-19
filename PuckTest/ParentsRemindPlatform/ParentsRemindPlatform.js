@@ -1,8 +1,7 @@
-
 const message = document.getElementById("detail");
 const hour = document.getElementById("hour");
-const min = document.getElementById("minute");
 
+  
 var connection;
 document.getElementById("save").addEventListener("click", function() {
   // disconnect if connected already
@@ -14,14 +13,14 @@ document.getElementById("save").addEventListener("click", function() {
 // set snooze
 // test 2 alarms at the same time
   var BANGLE_CODE = `
+  
 Bangle.loadWidgets();
 Bangle.drawWidgets();
 require("sched").getAlarms();
-require("sched").newDefaultAlarm();
-require("sched").setAlarm("myalarm", {
-  msg: "${mess}",
-  t: ${time},
-  rp: true
+let alarm = require("sched").newDefaultAlarm();
+  require("sched").setAlarm("myalarm", { // as an alarm
+  msg : ${message},
+  t : ${hour} * 3600000 //
 });
 require("sched").reload();
 Bangle.buzz();
@@ -46,6 +45,7 @@ Bangle.setLCDPower(1);
 
   });
 });
+
 
   
 
