@@ -1,10 +1,10 @@
 
-const message = document.getElementById("detail");
-const hour = document.getElementById("hour");
-const min = document.getElementById("minute");
+const message = document.getElementById("message").value;
+const hour = document.getElementById("hour").value;
+const min = document.getElementById("min").value;
 
 var connection;
-document.getElementById("save").addEventListener("click", function() {
+document.getElementById("upload").addEventListener("click", function() {
   // disconnect if connected already
   if (connection) {
     connection.close();
@@ -16,13 +16,18 @@ document.getElementById("save").addEventListener("click", function() {
   var BANGLE_CODE = `
 Bangle.loadWidgets();
 Bangle.drawWidgets();
+let alarm = require("sched").newDefaultAlarm();
+
+// Get a new timer with default values
+let timer = require("sched").newDefaultTimer();
 require("sched").getAlarms();
-require("sched").newDefaultAlarm();
-require("sched").setAlarm("myalarm", {
-  msg: "${mess}",
-  t: ${time},
-  rp: true
+// Add/update an existing alarm (using fields from the object shown above)
+require("sched").setAlarm("mytimer", { // as a timer
+  msg : ${message},
+  timer : ${min} * 60 * 1000 // x minutes
 });
+
+;
 require("sched").reload();
 Bangle.buzz();
 Bangle.setLCDPower(1);
