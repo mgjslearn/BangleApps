@@ -3,21 +3,19 @@ const hour = document.getElementById("hour");
 
   
 var connection;
-document.getElementById("save").addEventListener("click", function() {
+document.getElementById("upload").addEventListener("click", function() {
   // disconnect if connected already
   if (connection) {
     connection.close();
     connection = undefined;
   }
 
-// set snooze
-// test 2 alarms at the same time
   var BANGLE_CODE = `
   
 Bangle.loadWidgets();
 Bangle.drawWidgets();
 require("sched").getAlarms();
-let alarm = require("sched").newDefaultAlarm();
+require("sched").newDefaultAlarm();
   require("sched").setAlarm("myalarm", { // as an alarm
   msg : ${message},
   t : ${hour} * 3600000 //
