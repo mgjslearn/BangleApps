@@ -1,30 +1,34 @@
-const surveyReminder = document.getElementbyId("customSurvey");
-const hourTime = document.getElementbyId("hour");
-const minsTime = document.getElementbyId("minute");
 
 
-  var connection;
+const message = document.getElementById("customSurvey");
+const hour = document.getElementById("hour");
+const min = document.getElementById("minute");
+
+var connection;
 document.getElementById("upload").addEventListener("click", function() {
   // disconnect if connected already
   if (connection) {
     connection.close();
     connection = undefined;
   }
+
+// set snooze
+// test 2 alarms at the same time
+  var BANGLE_CODE = `
+Bangle.loadWidgets();
+Bangle.drawWidgets();
+require("sched").getAlarms();
+require("sched").newDefaultAlarm();
+require("sched").setAlarm("myalarm", {
+  msg: "${mess}",
+  t: ${time},
+  rp: true
+});
+require("sched").reload();
+Bangle.buzz();
+Bangle.setLCDPower(1);
+`;
   
- var BANGLE_CODE = `
-      Bangle.loadWidgets();
-      Bangle.drawWidgets();
-      require("sched").getAlarms();
-      require("sched").newDefaultAlarm();
-      require("sched").setAlarm("myalarm", {
-        msg: "${mess}",
-        t: ${time},
-        rp: true
-      });
-      require("sched").reload();
-      Bangle.buzz();
-      Bangle.setLCDPower(1);
-      `;
   // Connect
   Puck.connect(function(c) {
     if (!c) {
@@ -43,8 +47,6 @@ document.getElementById("upload").addEventListener("click", function() {
 
   });
 });
-
-
 
 var notifCounter = 0;
   
