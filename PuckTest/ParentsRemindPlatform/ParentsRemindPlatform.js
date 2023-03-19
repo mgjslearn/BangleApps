@@ -1,5 +1,6 @@
 const message = document.getElementById("detail");
 const hour = document.getElementById("hour");
+const min = document.getElementById("minute");
 
   
 var connection;
@@ -17,8 +18,9 @@ Bangle.drawWidgets();
 require("sched").getAlarms();
 require("sched").newDefaultAlarm();
   require("sched").setAlarm("myalarm", { // as an alarm
-  msg : ${message},
-  t : ${hour} * 3600000 //
+  msg : "${message}",
+  t : "${time}",
+  rp:true
 });
 require("sched").reload();
 Bangle.buzz();
