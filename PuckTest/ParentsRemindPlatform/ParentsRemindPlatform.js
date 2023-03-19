@@ -1,11 +1,10 @@
 
-
-const message = document.getElementById("customSurvey");
+const message = document.getElementById("detail");
 const hour = document.getElementById("hour");
 const min = document.getElementById("minute");
 
 var connection;
-document.getElementById("upload").addEventListener("click", function() {
+document.getElementById("save").addEventListener("click", function() {
   // disconnect if connected already
   if (connection) {
     connection.close();
@@ -47,25 +46,6 @@ Bangle.setLCDPower(1);
 
   });
 });
-
-var notifCounter = 0;
-  
-    function executeLunchReminder() {
-       Puck.write('LED1.set();\n'); 
-       showAlert2(); 
-    }
-       
-    function showAlert1() {
-      var myText = "HOMEWORK TIMER + REMINDER HAS BEEN SENT TO YOUR CHILD'S BANGLE WATCH";
-      alert(myText);
-      notifCounter = 1;
-    }
-    function showAlert2() {
-      var myText = "MEAL TIME REMINDER HAS BEEN SENT TO YOUR CHILD'S BANGLE WATCH";
-      alert(myText);
-      let drag;
-      notifCounter = 1; 
-    }
 
 
     /***
