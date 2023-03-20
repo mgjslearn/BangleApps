@@ -1,4 +1,4 @@
-const message = document.getElementById("detail");
+const message = document.getElementById("reminder");
 const hour = document.getElementById("hour");
 const min = document.getElementById("minute");
 
