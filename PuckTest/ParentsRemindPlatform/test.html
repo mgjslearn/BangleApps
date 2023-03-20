@@ -25,25 +25,53 @@
 -->
           <div class="col-3">
                 <h2 class="col-6">Reminders</h2>
-                <textarea id="detail" placeholder="Enter your message"></textarea>
+                <textarea id="reminder" placeholder="Enter your message"></textarea>
           </div>
           <div class="col-3">
                 <button id="upload"onclick="Puck.write('LED1.set();\n');">Upload</button>
           </div>
    <script>
-     const message = document.getElementbyId("detail");
+     const message = document.getElementbyId("reminder");
 document.getElementById("upload").addEventListener("click", function() {
   var connection;
-    var BANGLE_CODE = '
-  E.showMessage("${message}", "Hi");
-Bangle.buzz();
-Bangle.setLCDPower(1); 
-';
   
   // disconnect if connected already
   if (connection) {
     connection.write(BANGLE_CODE);
   }
+   var BANGLE_CODE = `
+Bangle.loadWidgets();
+Bangle.drawWidgets();
+require("sched").getAlarms();
+require("sched").newDefaultAlarm();
+require("sched").setAlarm("myalarm", {
+  msg: "${message}",
+  t: ${time},
+  rp: true
+});
+require("sched").reload();
+Bangle.buzz();
+Bangle.setLCDPower(1);
+`;
+  
+  // Connect
+  Puck.connect(function(c) {
+    if (!c) {
+      alert("Couldn't connect!");
+      return;
+    }
+    connection = c;
+    // First, reset the Bangle
+    connection.write("reset();\n", function() {
+      // Wait for it to reset itself
+      setTimeout(function() {
+        // Now upload our code to it
+        connection.write(BANGLE_CODE);
+      }, 1000);
+    });
+
+  });
+});
 
    </script>
   </div>
