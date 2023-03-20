@@ -12,10 +12,18 @@ document.getElementById("upload").addEventListener("click", function() {
   }
 
   var BANGLE_CODE = '
-  E.showMessage("${message}", "hi");
+ Bangle.loadWidgets();
+Bangle.drawWidgets();
+require("sched").getAlarms();
+require("sched").newDefaultAlarm();
+require("sched").setAlarm("myalarm", {
+  msg: "${message}",
+  rp: true
+});
+require("sched").reload();
 Bangle.buzz();
 Bangle.setLCDPower(1);
-';
+`;
   
   // Connect
   Puck.connect(function(c) {
