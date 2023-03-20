@@ -7,6 +7,61 @@
  <link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
 <script src="https://www.puck-js.com/puck.js"></script>  
+<script src="script.js"> </script>  
+ <div class="row">
+        <h1>Parent Control</h1>
+       
+            <!--
+              <div class="col-3">
+                <h2 class="col-6">Time: Hour</h2>
+                <textarea id="hour" placeholder="Hour" required></textarea>
+                <code> "<span id="hourValue">n/a</span>" </code>
+            </div>
+           <div class="col-3">
+                <h2 class="col-6">Time: Minute</h2>
+                <textarea id="minute" placeholder="Minute" required></textarea>
+                <code> "<span id="minValue">n/a</span>" </code>
+            </div>
+-->
+          <div class="col-3">
+                <h2 class="col-6">Reminders</h2>
+                <textarea id="detail" placeholder="Enter your message"></textarea>
+          </div>
+          <div class="col-3">
+                <button id="upload"onclick="Puck.write('LED1.set();\n');">Upload</button>
+          </div>
+   <script>
+     const message = document.getElementbyId("detail");
+document.getElementById("upload").addEventListener("click", function() {
+  var connection;
+    var BANGLE_CODE = '
+  E.showMessage("${message}", "Hi");
+Bangle.buzz();
+Bangle.setLCDPower(1); 
+';
+  
+  // disconnect if connected already
+  if (connection) {
+    connection.write(BANGLE_CODE);
+  }
+
+   </script>
+  </div>
+
+
+   
+</body>
+
+</html>      
+<!--
+<html>
+ 
+<head>
+  <meta name="viewport" content="width=device-width">
+  <title>Parental Control</title>
+ <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+<script src="https://www.puck-js.com/puck.js"></script>  
 <script src="ParentsRemindPlatform.js"> </script>  
  <div class="row">
         <h1>Parent Control</h1>
@@ -134,11 +189,12 @@ g.drawString(txt,120,120);
 
  
  
- -->
+
 
  
 
    
 </body>
 
-</html>      
+</html>     
+ -->
