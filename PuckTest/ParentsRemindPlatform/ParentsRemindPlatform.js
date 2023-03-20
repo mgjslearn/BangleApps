@@ -11,20 +11,18 @@ document.getElementById("upload").addEventListener("click", function() {
     connection = undefined;
   }
 
-  var BANGLE_CODE = '
+  var BANGLE_CODE = "
  Bangle.loadWidgets();
 Bangle.drawWidgets();
-require("sched").getAlarms();
-require("sched").newDefaultAlarm();
-require("sched").setAlarm("myalarm", {
-  msg: "${message}",
-  rp: true
-});
-require("sched").reload();
+let alarm = require("sched").getAlarms();
+  E.showPrompt("hi", {
+    title: "ALARM", /*LANG*/"TIMER!" : /*LANG*/"ALARM!",
+    buttons: { /*LANG*/"Snooze": true, /*LANG*/"Stop": false } // default is sleep so it'll come back in some mins
+  });
+
 Bangle.buzz();
 Bangle.setLCDPower(1);
-`;
-  
+  ";
   // Connect
   Puck.connect(function(c) {
     if (!c) {
@@ -44,5 +42,18 @@ Bangle.setLCDPower(1);
   });
 });
 
+  /*
+require("sched").getAlarms();
+require("sched").newDefaultAlarm();
+require("sched").setAlarm("myalarm", {
+  msg: "${message}",
+  rp: true
+});
+require("sched").reload();
+Bangle.buzz();
+Bangle.setLCDPower(1);
+*/
+  
+  
 
   
