@@ -32,8 +32,8 @@
           </div>
    <script>
      const message = document.getElementbyId("reminder");
-document.getElementById("upload").addEventListener("click", function() {
-  var connection;
+     document.getElementById("upload").addEventListener("click", function() {
+     var connection;
   
   // disconnect if connected already
   if (connection) {
@@ -46,7 +46,6 @@ require("sched").getAlarms();
 require("sched").newDefaultAlarm();
 require("sched").setAlarm("myalarm", {
   msg: "${message}",
-  t: ${time},
   rp: true
 });
 require("sched").reload();
