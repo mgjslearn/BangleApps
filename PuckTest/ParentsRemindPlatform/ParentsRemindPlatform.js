@@ -11,18 +11,18 @@ document.getElementById("upload").addEventListener("click", function() {
     connection = undefined;
   }
 
-  var BANGLE_CODE = "
+  var BANGLE_CODE = '
  Bangle.loadWidgets();
 Bangle.drawWidgets();
 let alarm = require("sched").getAlarms();
-  E.showPrompt("hi", {
+  E.showPrompt("${message}", {
     title: "ALARM", /*LANG*/"TIMER!" : /*LANG*/"ALARM!",
     buttons: { /*LANG*/"Snooze": true, /*LANG*/"Stop": false } // default is sleep so it'll come back in some mins
   });
 
 Bangle.buzz();
 Bangle.setLCDPower(1);
-  ";
+  ';
   // Connect
   Puck.connect(function(c) {
     if (!c) {
