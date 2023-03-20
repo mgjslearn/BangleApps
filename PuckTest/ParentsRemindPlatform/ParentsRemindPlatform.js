@@ -1,3 +1,4 @@
+/*
 const message = document.getElementById("reminder");
 const hour = document.getElementById("hour");
 const min = document.getElementById("minute");
@@ -41,6 +42,7 @@ Bangle.setLCDPower(1);
 
   });
 });
+*/
 
   /*
 require("sched").getAlarms();
