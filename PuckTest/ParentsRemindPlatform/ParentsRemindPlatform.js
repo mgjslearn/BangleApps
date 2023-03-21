@@ -22,7 +22,6 @@ require("sched").getAlarms();
 require("sched").setAlarm("alarm", {
   msg: "${message}",
   t: ${hour_val+min_val},
-  rp:true;
 });
 require("sched").reload();
 Bangle.buzz();
