@@ -5,10 +5,11 @@ document.getElementById("upload").addEventListener("click", function() {
     connection.close();
     connection = undefined;
   }
-  const message = document.getElementById("reminder").value;
-  const time = document.getElementById("time").value;
-  const hour_val = time.substring(0,2) * 3600000;
-  const min_val = time.substring(3,5) * 60000;
+  const message = document.getElementById("reminderValue").value;
+  const hours = document.getElementById("hourValue").value;
+  const mins = document.getElementById("minValue").value;  
+  const hour_val = hours * 3600000;
+  const min_val = mins * 60000;
   
      document.getElementById("upload").addEventListener("click", function() {
      var connection;
