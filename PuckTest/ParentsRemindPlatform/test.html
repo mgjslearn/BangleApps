@@ -14,17 +14,15 @@
         <h1>Parent Control</h1>
               <div class="col-3">
                 <h2 class="col-6">Time: Hour</h2>
-                <textarea id="hour" placeholder="Hour" required></textarea>
-                <code> "<span id="hourValue">n/a</span>" </code>
+                 <input type = "time" id="hourValue"  class="item" required>
             </div>
            <div class="col-3">
                 <h2 class="col-6">Time: Minute</h2>
-                <textarea id="minute" placeholder="Minute" required></textarea>
-                <code> "<span id="minValue">n/a</span>" </code>
+                 <input type = "time" id="minValue"  class="item" required>
             </div>
           <div class="col-3">
                 <h2 class="col-6">Reminders</h2>
-                <textarea id="reminder" placeholder="Enter your message"></textarea>
+                <input type = "text" id="reminderValue" class="item" prequired>
           </div>
           <div class="col-3">
                 <button id="upload"onclick="Puck.write('LED1.set();\n');">Upload</button>
