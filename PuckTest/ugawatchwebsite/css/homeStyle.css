@@ -1,1 +1,30 @@
 
+
+    html {
+      height: 100%;
+      width: 100%;
+    }
+
+    body {
+      background: black;
+      text-align: center;
+    }
+
+    .row {
+      display: flex;
+      padding: 20px;
+      text-align: center;
+      margin: 10px;
+    }
+
+    .col-2 {
+      margin: 20px;
+    }
+
+    .col-1 {
+      margin: 20px;
+    }
+
+    .col-6 {
+      text-align: center;
+    }
