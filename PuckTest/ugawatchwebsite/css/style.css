@@ -8,10 +8,7 @@
     }
 
     body {
-      background: black;
+      background-color: black;
       text-align: center;
     }
-    nav {
-        background: black;
-        font-color: white;
-    }
+    
