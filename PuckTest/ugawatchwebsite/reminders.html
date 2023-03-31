@@ -23,7 +23,7 @@
           <h1>Parent Control</h1>
         </div>
         <div class="col-3">
-            <button type="button" class="btn btn-primary">Add Reminder</button>
+          <button class="btn btn-primary" id="upload" onclick="Puck.write('LED1.set();\n')">Upload</button>
         </div>
         <p></p>
       </div>      
@@ -48,7 +48,8 @@
 </div>
 <div class ="row">
   <div class="col-12">
-        <button class="btn btn-primary" id="upload" onclick="Puck.write('LED1.set();\n')">Upload</button>
+         <button type="button" class="btn btn-primary">Add (+)</button>
+         <button type="button" class="btn btn-primary">Remove (-)</button> 
 </div> 
     
    
