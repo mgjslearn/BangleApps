@@ -1,0 +1,129 @@
+
+<html>
+ 
+<head>
+  <meta name="viewport" content="width=device-width">
+  <title>Parental Control</title>
+ <link rel="stylesheet" type="text/css" href="css/style.css" />
+ <script src="https://www.puck-js.com/puck.js"></script>  
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> 
+<!--<script src="script.js"> </script>  -->
+  <style>
+    html {
+      height: 100%;
+      width: 100%;
+    }
+    body {
+        background: white;
+        text-align: center;
+    }
+    .row {
+      display: flex;
+      padding: 20px;
+      text-align: center;
+       margin: 10px;    
+    }
+    
+    .col-2 {
+      margin: 20px;
+    }
+    
+    .col-1 {
+      margin: 20px;
+    }
+    .col-6 {
+       text-align: center; 
+    }
+     
+      .titleBar{
+        font-size: 20;
+        width: 100%;
+        background-color: white;
+        
+      }
+      .btn btn-primary{
+        color: #326fba;
+      }
+      .btn btn-danger{
+        color: #326fba;
+      }
+      .headspacer{
+        padding: 1px;
+        
+      }
+      .whitespacer{
+        padding: 2px;
+      }
+      .pageflow{
+        color: #bec4c0;
+        font-size: 15 px;
+      }
+      #passtitle{
+        font-size: 15px; 
+        color: green;
+        margin-left: 60px;
+      }
+      .divgray{
+        background-color: #f2f2f2;
+        padding: 1px
+      }
+      .divwhite{
+      background-color: white;
+      padding: 2px
+      }
+       .headflow{
+      background-color: white;
+  </style>
+</head>
+
+ <body>
+
+  <div class = "divwhite">
+    <div class = "titleBar">
+        <div class = "divwhite"></div>
+      <div class = "row">
+        <div class="col-3">
+          <button type="button" class="btn btn-danger">Back</button>
+        </div>
+        <div class="col-6">
+          <h1>Parent Control</h1>
+        </div>
+        <div class="col-3">
+            <button type="button" class="btn btn-danger">Next</button>
+        </div>
+        <p></p>
+      </div>      
+    </div>
+  </div>
+  <div class="row">  
+ <div class="col-3">
+      <h2 class="col-6">Time:</h2>
+        <input type="time" id="timeValue" placeholder="Enter Minutes" required>
+  </div>
+<div class="col-3"> 
+      <h2 class="col-6">Survey/Reminder:</h2>
+       <input type="text" id="reminderValue" placeholder="Enter Reminder" required>
+</div>
+<div class="col-3">
+  <h2 class="col-6">Date:</h2>
+    <input type="date" id="rpValue" placeholder="Choose date" required>
+</div>
+<div class="col-3">
+  <h2 class="col-6">RP Pattern:</h2>
+    <input type="text" id="rpValue" placeholder="Enter Repeat Pattern" required>
+</div>
+<div class ="row">
+  <div class="col-12">
+        <button class="btn btn-primary" id="upload" onclick="Puck.write('LED1.set();\n')">Upload</button>
+</div> 
+    
+   
+   
+
+  </div>
+
+
+   
+</body>
+
+</html>    
