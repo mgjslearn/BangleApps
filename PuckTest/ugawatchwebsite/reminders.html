@@ -54,55 +54,47 @@
     </div>
   </div>
   </nav>
-  
- <body>
-  <div class = "divwhite">
-    <div class = "titleBar">
-        <div class = "divwhite"></div>
-      <div class = "row">
-        <div class="col-3">
-          <button type="button" href = "ugawatchwebsite/index.html" class="btn btn-danger">Back</button>
-        </div>
-        <div class="col-6">
-          <h1>Parent Control</h1>
-        </div>
-        <div class="col-3">
-          <button class="btn btn-primary" id="upload" onclick="Puck.write('LED1.set();\n')">Upload</button>
-        </div>
-        <p></p>
-      </div>      
-    </div>
-  </div>
-  <div class="row">  
- <div class="col-3">
-      <h2 class="col-6">Time:</h2>
+  <body>
+   <div class = "divwhite">
+     <div class = "titleBar">
+         <div class = "divwhite"></div>
+       <div class = "row">
+         <div class="col-3">
+           <button type="button" href = "ugawatchwebsite/index.html" class="btn btn-danger">Back</button>
+         </div>
+         <div class="col-6">
+           <h1>Parent Control</h1>
+         </div>
+         <div class="col-3">
+           <button class="btn btn-primary" id="upload" onclick="Puck.write('LED1.set();\n')">Upload</button>
+         </div>
+         <p></p>
+       </div>      
+     </div>
+   </div>
+   <div class="row">  
+     <div class="col-3">
+        <h2 class="col-6">Time:</h2>
         <input type="time" id="time" placeholder="Enter Time" required>
-  </div>
-<div class="col-3"> 
-      <h2 class="col-6">Survey/Reminder:</h2>
-       <input type="text" id="detail" placeholder="Enter Reminder" required>
-</div>
-<div class="col-3">
-  <h2 class="col-6">Date:</h2>
-    <input type="date" id="date" placeholder="Choose date" required>
-</div>
-<div class="col-3">
-  <h2 class="col-6">RP Pattern:</h2>
-    <input type="text" id="repeat" placeholder="Enter Repeat Pattern" required>
-</div>
-<div class ="row">
-  <div class="col-12">
-         <button type="button" onclick="addAlarm()" class="btn btn-primary">Add (+)</button>
-         <button type="button" class="btn btn-primary">Remove (-)</button> 
-</div> 
-    
-   
-   
-
-  </div>
-
-
-   
-</body>
+      </div>
+      <div class="col-3"> 
+         <h2 class="col-6">Survey/Reminder:</h2>
+          <input type="text" id="detail" placeholder="Enter Reminder" required>
+      </div>
+      <div class="col-3">
+          <h2 class="col-6">Date:</h2>
+          <input type="date" id="date" placeholder="Choose date" required>
+      </div>
+      <div class="col-3">
+          <h2 class="col-6">RP Pattern:</h2>
+          <input type="text" id="repeat" placeholder="Enter Repeat Pattern" required>
+      </div>
+      <div class ="row">
+        <div class="col-12">
+            <button type="button" onclick="addAlarm()" class="btn btn-primary">Add (+)</button>
+            <button type="button" class="btn btn-primary">Remove (-)</button> 
+      </div> 
+    </div>  
+ </body>
 
 </html>    
