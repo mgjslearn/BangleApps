@@ -1,0 +1,65 @@
+
+    html {
+      height: 100%;
+      width: 100%;
+    }
+    body {
+        background: white;
+        text-align: center;
+    }
+    .row {
+      display: flex;
+      padding: 20px;
+      text-align: center;
+       margin: 10px;    
+    }
+    
+    .col-2 {
+      margin: 20px;
+    }
+    
+    .col-1 {
+      margin: 20px;
+    }
+    .col-6 {
+       text-align: center; 
+    }
+     
+      .titleBar{
+        font-size: 20;
+        width: 100%;
+        background-color: white;
+        
+      }
+      .btn btn-primary{
+        color: #326fba;
+      }
+      .btn btn-danger{
+        color: #326fba;
+      }
+      .headspacer{
+        padding: 1px;
+        
+      }
+      .whitespacer{
+        padding: 2px;
+      }
+      .pageflow{
+        color: #bec4c0;
+        font-size: 15 px;
+      }
+      #passtitle{
+        font-size: 15px; 
+        color: green;
+        margin-left: 60px;
+      }
+      .divgray{
+        background-color: #f2f2f2;
+        padding: 1px
+      }
+      .divwhite{
+      background-color: white;
+      padding: 2px
+      }
+       .headflow{
+      background-color: white;
