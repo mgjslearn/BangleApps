@@ -31,14 +31,14 @@
     background-color: white;
 
     }
-  
+    #ar {
+        padding: 5px;
+    }   
     .btn btn-primary{
-    color: #326fba;
-     padding: 5px;
+    color: #326fba; 
     }
     .btn btn-danger{
     color: #326fba;
-     padding: 5px;
     }
     .headspacer{
     padding: 1px;
