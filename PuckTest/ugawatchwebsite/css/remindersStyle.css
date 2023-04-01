@@ -31,14 +31,14 @@
     background-color: white;
 
     }
-    button {
-        margin: 10px;
-    }
+  
     .btn btn-primary{
     color: #326fba;
+     padding: 5px;
     }
     .btn btn-danger{
     color: #326fba;
+     padding: 5px;
     }
     .headspacer{
     padding: 1px;
