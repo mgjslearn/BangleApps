@@ -8,19 +8,17 @@
     }
 
     .homecontent {
-         background-color: white;
+     background-color: white;
+     font-color: black; 
+     font-size: 20px;
     }
-    
-    #welcomecontent {
-      font-color: black; 
-        font-size: 20px;
-    }   
-     .row {
-          display: flex;
-          padding: 20px;
-          text-align: center;
-           margin: 10px;    
-        }
+      
+    .row {
+      display: flex;
+      padding: 20px;
+      text-align: center;
+       margin: 10px;    
+    }
 
 
    
