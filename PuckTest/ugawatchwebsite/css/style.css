@@ -23,6 +23,7 @@
     .homeElements { 
       border-color: gray;
       border-thickness: 5px;
+      margin: 5px;    
     }
 
 
