@@ -19,6 +19,11 @@
       text-align: center;
        margin: 10px;    
     }
+    
+    .homeElements { 
+      border-color: gray;
+      border-thickness: 5px;
+    }
 
 
    
