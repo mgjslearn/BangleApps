@@ -33,7 +33,7 @@
     font-size: 20;
     width: 100%;
     background-color: white;
-    text-align: left;
+    text-align: left !important;
   }
 
   .whitespacer{
