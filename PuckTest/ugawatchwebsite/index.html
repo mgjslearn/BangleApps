@@ -76,11 +76,11 @@
              <div class="card">
                <div class="card-body">
                  <h5 class="card-title">Activity Graph</h5>
-                 <div class="form-group">
-                <label for="date-range-picker">Select a date range:</label>
-                <input type="text" class="form-control" id="date-range-picker">
+                <div class="form-group">
+                <label for="date-picker">Select a date:</label>
+                <input type="text" class="form-control" id="date-picker">
               </div>
-              <div id="activity-graph"></div>          
+              <div id="activity-graph"></div>       
                </div>
              </div>
            </div>
@@ -108,19 +108,15 @@
 
   </div>
    <script src="https://cdn.jsdelivr.net/npm/daterangepicker@3.1.0/daterangepicker.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.9/dist/flatpickr.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.28.3/dist/apexcharts.min.js"></script>
     <script>
       $(function() {
-        // Initialize date range picker
-        $('#date-range-picker').daterangepicker({
-          startDate: moment().subtract(7, 'days'),
-          endDate: moment(),
-          ranges: {
-            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-            'This Month': [moment().startOf('month'), moment().endOf('month')],
-            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-          }
+        // Initialize date picker
+        $('#date-picker').flatpickr({
+          dateFormat: 'Y-m-d',
+          defaultDate: 'today',
+          maxDate: 'today'
         });
         
         // Initialize activity graph
@@ -147,10 +143,10 @@
             },
           },
         };
-        var chart = new ApexCharts(document.querySelector("#activity-graph
-
-
-   </script>
+        var chart = new ApexCharts(document.querySelector("#activity-graph"), options);
+        chart.render();
+      });
+    </script>
  </body>
 </html>
 
