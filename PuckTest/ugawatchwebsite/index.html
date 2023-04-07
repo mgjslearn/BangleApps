@@ -76,7 +76,11 @@
              <div class="card">
                <div class="card-body">
                  <h5 class="card-title">Activity Graph</h5>
-                 <img src="activity-graph.png" alt="Activity Graph" class="img-fluid">
+                 <div class="form-group">
+                <label for="date-range-picker">Select a date range:</label>
+                <input type="text" class="form-control" id="date-range-picker">
+              </div>
+              <div id="activity-graph"></div>          
                </div>
              </div>
            </div>
@@ -103,6 +107,50 @@
     </div> <!--homecontent div-->
 
   </div>
+   <script src="https://cdn.jsdelivr.net/npm/daterangepicker@3.1.0/daterangepicker.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.28.3/dist/apexcharts.min.js"></script>
+    <script>
+      $(function() {
+        // Initialize date range picker
+        $('#date-range-picker').daterangepicker({
+          startDate: moment().subtract(7, 'days'),
+          endDate: moment(),
+          ranges: {
+            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+            'This Month': [moment().startOf('month'), moment().endOf('month')],
+            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+          }
+        });
+        
+        // Initialize activity graph
+        var options = {
+          chart: {
+            type: 'area',
+            height: 350,
+            toolbar: {
+              show: false
+            }
+          },
+          dataLabels: {
+            enabled: false
+          },
+          stroke: {
+            curve: 'smooth'
+          },
+          xaxis: {
+            type: 'datetime'
+          },
+          tooltip: {
+            x: {
+              format: 'dd MMM yyyy'
+            },
+          },
+        };
+        var chart = new ApexCharts(document.querySelector("#activity-graph
+
+
+   </script>
  </body>
 </html>
 
