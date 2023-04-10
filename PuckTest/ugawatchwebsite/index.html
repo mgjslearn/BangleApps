@@ -134,15 +134,14 @@
            <div class="col-3">
              <button class="btn btn-outline-success" type="submit">Add Log</button>
            </div>
-           <div class="col-6">
+           <div class=" card-title col-6">
                <h3>Log</h3>
             </div>
             <div class="col-3">
               <button class="btn btn-outline-primary" type="submit">Save Log</button>
             </div>
           </div>
-        
-           <table class="table">
+           <table class="table card-body">
             <thead>
               <tr>
                 <th>Day</th>
@@ -155,16 +154,16 @@
               <tr>
                 <td>
                   <div class="form-floating">
-                    <select class="form-select" id="logDate">
-                      <input type="date" id="date" placeholder="Enter Date" required>
+                    <select class="form-select" type="date" id="logDate">
+                    
                     </select>
                     <label for="logDate">Date</label>
                   </div>
                 </td>
                 <td>
                   <div class="form-floating">
-                    <select class="form-select" id="startTime">
-                      <input type="time" id="stime" placeholder="started time" required>
+                    <select class="form-select" type="time" id="startTime">
+                   
                     </select>
                     <label for="startTime">Started Wear (Time)</label>
                   </div>
@@ -191,7 +190,7 @@
         <div class = "row">
          <div class = "col-12">
          <!--Activity stats graph-->
-         <div class="dropdown">
+         <div class="dropdown card">
           <button class="col-12 card-title btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
            <h5>Activity Graph - Click to See  </h5> 
            </div>
