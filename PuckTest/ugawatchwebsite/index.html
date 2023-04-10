@@ -130,26 +130,61 @@
          </div>
         </div> <!--row-->
         <div class="row">
-           <div class="col-3">
-            <h4>Date:
-            <input type="date" id="time" placeholder="Date" required>
-             </h4>
-          </div>
-          <div class="col-3"> 
-             <h4>Started Wear:
-              <input type="time" id="detail" placeholder="Started Wear" required>
-              </h4>
-          </div>
-          <div class="col-3">
-              <h4>Ended Wear:
-              <input type="time" id="date" placeholder="Ended Wear" required>
-               </h4>
-          </div>
-          <div class="col-3">
-               <form class="d-flex" role="search">
-                <input class="form-control me-2" type="text" placeholder="Notes" aria-label="Notes">
-              </form>
-          </div>
+           <table class="table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Started Wear (Time)</th>
+                <th>Ended Wear (Time)</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="form-floating">
+                    <select class="form-select" id="logDate">
+                      
+                    </select>
+                    <label for="logDate">Date</label>
+                  </div>
+                </td>
+                <td>
+                  <div class="form-floating">
+                    <select class="form-select" id="startTime">
+                      <option selected>Choose start time...</option>
+                      <option>6:00 AM</option>
+                      <option>7:00 AM</option>
+                      <option>8:00 AM</option>
+                      <option>9:00 AM</option>
+                      <option>10:00 AM</option>
+                    </select>
+                    <label for="startTime">Started Wear (Time)</label>
+                  </div>
+                </td>
+                <td>
+                  <div class="form-floating">
+                    <select class="form-select" id="endTime">
+                      <option selected>Choose end time...</option>
+                      <option>11:00 AM</option>
+                      <option>12:00 PM</option>
+                      <option>1:00 PM</option>
+                      <option>2:00 PM</option>
+                      <option>3:00 PM</option>
+                    </select>
+                    <label for="endTime">Ended Wear (Time)</label>
+                  </div>
+                </td>
+                <td>
+                  <div class="form-floating">
+                    <textarea class="form-control" placeholder="Notes" id="logNotes"></textarea>
+                    <label for="logNotes">Notes</label>
+                  </div>
+                </td>
+              </tr>
+              <!-- Add more rows as needed -->
+            </tbody>
+          </table>
         </div>
         <div class = "row">
          <div class = "col-12">
