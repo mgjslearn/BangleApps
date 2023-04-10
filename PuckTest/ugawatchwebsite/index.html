@@ -133,7 +133,7 @@
            <table class="table">
             <thead>
               <tr>
-                <th>Date</th>
+                <th>Day</th>
                 <th>Started Wear (Time)</th>
                 <th>Ended Wear (Time)</th>
                 <th>Notes</th>
@@ -144,7 +144,7 @@
                 <td>
                   <div class="form-floating">
                     <select class="form-select" id="logDate">
-                      
+                      <input type="time" id="date" placeholder="Day" required>
                     </select>
                     <label for="logDate">Date</label>
                   </div>
@@ -152,12 +152,7 @@
                 <td>
                   <div class="form-floating">
                     <select class="form-select" id="startTime">
-                      <option selected>Choose start time...</option>
-                      <option>6:00 AM</option>
-                      <option>7:00 AM</option>
-                      <option>8:00 AM</option>
-                      <option>9:00 AM</option>
-                      <option>10:00 AM</option>
+                      <input type="time" id="stime" placeholder="Started Wear" required>
                     </select>
                     <label for="startTime">Started Wear (Time)</label>
                   </div>
@@ -165,12 +160,7 @@
                 <td>
                   <div class="form-floating">
                     <select class="form-select" id="endTime">
-                      <option selected>Choose end time...</option>
-                      <option>11:00 AM</option>
-                      <option>12:00 PM</option>
-                      <option>1:00 PM</option>
-                      <option>2:00 PM</option>
-                      <option>3:00 PM</option>
+                       <input type="time" id="etime" placeholder="Ended Wear" required>
                     </select>
                     <label for="endTime">Ended Wear (Time)</label>
                   </div>
