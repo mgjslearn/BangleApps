@@ -129,7 +129,7 @@
          <div class="col-4">
          </div>
         </div> <!--row-->
-        <div class="row">
+        <div class="row card">
           <div class="row">
            <div class="col-3">
              <button class="btn btn-outline-success" type="submit">Add Log</button>
@@ -154,25 +154,19 @@
               <tr>
                 <td>
                   <div class="form-floating">
-                    <select class="form-select" type="date" id="logDate">
-                    
-                    </select>
+                  <input type="date" id="date" placeholder="Day" required>
                     <label for="logDate">Date</label>
                   </div>
                 </td>
                 <td>
                   <div class="form-floating">
-                    <select class="form-select" type="time" id="startTime">
-                   
-                    </select>
+                    <input type="time" id="startTime" placeholder="started wear" required>
                     <label for="startTime">Started Wear (Time)</label>
                   </div>
                 </td>
                 <td>
                   <div class="form-floating">
-                    <select class="form-select" id="endTime">
-                       <input type="time" id="etime" placeholder="ended time" required>
-                    </select>
+                    <input type="time" id="endtime" placeholder="ended time" required>
                     <label for="endTime">Ended Wear (Time)</label>
                   </div>
                 </td>
