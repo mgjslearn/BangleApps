@@ -1,4 +1,4 @@
- 
+/* 
 
       $(function() {
         // Initialize date picker
@@ -34,7 +34,7 @@
         };
         var chart = new ApexCharts(document.querySelector("#activity-graph"), options);
         chart.render();
-      }); 
+      }); */
       
 // Hard-coded example data for steps walked
 const stepsData = {
