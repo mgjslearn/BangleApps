@@ -86,6 +86,6 @@ function generateActivityGraph(startDate, endDate) {
     };
 
     // Create the chart
-    const chart = new ApexCharts(document.getElementById('activity-graph'), chartOptions);
+    const chart = new ApexCharts(document.getElementById('#activity-graph'), chartOptions);
    
 
