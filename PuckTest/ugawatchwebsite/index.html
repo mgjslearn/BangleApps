@@ -6,8 +6,10 @@
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker@3.1.0/daterangepicker.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.9/dist/flatpickr.min.css">
+	 <script src="https://cdn.jsdelivr.net/npm/daterangepicker@3.1.0/daterangepicker.min.js"></script>
+	 <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.28.3/dist/apexcharts.min.js"></script>
+
      <link rel="stylesheet" type="text/css" href="css/style.css" />
  </head>
  
@@ -236,7 +238,73 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.9/dist/flatpickr.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.28.3/dist/apexcharts.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/daterangepicker@3.1.0/daterangepicker.min.js"></script>
-    <script src="userpf.js"></script>
+    <script>
+	// Hard-coded example data for steps walked
+const stepsData = {
+    "2023-04-01": 5000,
+    "2023-04-02": 7000,
+    "2023-04-03": 9000,
+    "2023-04-04": 6000,
+    "2023-04-05": 8000,
+    "2023-04-06": 10000,
+    "2023-04-07": 12000
+};
+
+// Function to generate the activity line graph
+function generateActivityGraph(startDate, endDate) {
+    // Filter the steps data based on the selected date range
+    const filteredStepsData = {};
+    const currentDate = new Date(startDate);
+    while (currentDate <= new Date(endDate)) {
+        const dateString = currentDate.toISOString().slice(0, 10);
+        filteredStepsData[dateString] = stepsData[dateString] || 0;
+        currentDate.setDate(currentDate.getDate() + 1);
+    }
+
+    // Create an array of dates and an array of steps
+    const dates = Object.keys(filteredStepsData);
+    const steps = Object.values(filteredStepsData);
+
+    // Create the chart options
+    const chartOptions = {
+        chart: {
+            type: 'line'
+        },
+        series: [{
+            name: 'Steps Walked',
+            data: steps
+        }],
+        xaxis: {
+            categories: dates,
+            type: 'datetime'
+        },
+        responsive: [{
+            breakpoint: 576,
+            options: {
+                chart: {
+                    height: 250
+                }
+            }
+        }]
+    };
+
+    // Create the chart
+    const chart = new ApexCharts(document.getElementById('activity-graph'), chartOptions);
+    chart.render();
+}
+
+// Set up the date picker
+$(document).ready(function() {
+    $('#date-picker').daterangepicker({
+        opens: 'left'
+    }, function(start, end) {
+        generateActivityGraph(start.format('YYYY-MM-DD'), end.format('YYYY-MM-DD'));
+    });
+
+    // Generate the initial graph
+    generateActivityGraph('2023-04-01', '2023-04-07');
+}); 
+	  </script>
  
 </html>
 
