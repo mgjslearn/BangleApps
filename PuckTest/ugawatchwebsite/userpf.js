@@ -1,5 +1,5 @@
  
-/*
+
       $(function() {
         // Initialize date picker
         $('#date-picker').flatpickr({
@@ -35,7 +35,7 @@
         var chart = new ApexCharts(document.querySelector("#activity-graph"), options);
         chart.render();
       }); 
-      */
+      
 // Hard-coded example data for steps walked
 const stepsData = {
     "2023-04-01": 5000,
