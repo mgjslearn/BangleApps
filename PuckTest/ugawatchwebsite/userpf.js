@@ -35,7 +35,6 @@
         var chart = new ApexCharts(document.querySelector("#activity-graph"), options);
         chart.render();
       }); */
-      
 // Hard-coded example data for steps walked
 const stepsData = {
     "2023-04-01": 5000,
@@ -86,6 +85,18 @@ function generateActivityGraph(startDate, endDate) {
     };
 
     // Create the chart
-    const chart = new ApexCharts(document.getElementById("activity-graph"), chartOptions);
-   
+    const chart = new ApexCharts(document.getElementById('activity-graph'), chartOptions);
+    chart.render();
+}
 
+// Set up the date picker
+$(document).ready(function() {
+    $('#date-picker').daterangepicker({
+        opens: 'left'
+    }, function(start, end) {
+        generateActivityGraph(start.format('YYYY-MM-DD'), end.format('YYYY-MM-DD'));
+    });
+
+    // Generate the initial graph
+    generateActivityGraph('2023-04-01', '2023-04-07');
+});
