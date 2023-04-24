@@ -1,80 +1,58 @@
- $(function() {
-            $('#datepicker').datepicker({
-                format: 'yyyy-mm-dd',
-                autoclose: true,
-                todayHighlight: true
-            });
-        });
-
-
 $(function() {
-    $.getJSON('example.json', function(data) {
-        var stepData = [];
-        for (var i = 0; i < data.length; i++) {
-            var date = moment(data[i].date, 'YYYY-MM-DD');
-            var steps = data[i].steps;
-            stepData.push({x: date, y: steps});
-        }
-        var chartData = {
-            datasets: [{
-                label: 'Steps walked',
-                data: stepData,
-                borderColor: 'rgba(54, 162, 235, 1)',
-                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                pointRadius: 0
-            }]
-        };
-        var ctx = document.getElementById('stepChart').getContext('2d');
-        var stepChart = new Chart(ctx, {
-            type: 'line',
-            data: chartData,
-            options: {
-                scales: {
-                    xAxes: [{
-                        type: 'time',
-                        time: {
-                            displayFormats: {
-                                day: 'MMM D'
-                            }
-                        },
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Date'
-                        }
-                    }],
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        },
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Steps'
-                        }
-                    }]
-                }
-            }
-        });
-        $('#datepicker').datepicker({
-            format: 'yyyy-mm-dd',
-            autoclose: true,
-            todayHighlight: true
-        }).on('changeDate', function(e) {
-            var selectedDate = moment(e.date);
-            var selectedSteps = null;
-            for (var i = 0; i < stepData.length; i++) {
-                if (selectedDate.isSame(stepData[i].x, 'day')) {
-                    selectedSteps = stepData[i].y;
-                    break;
-                }
-            }
-            if (selectedSteps !== null) {
-                $('#selectedDateSteps').text(selectedSteps);
-            } else {
-                $('#selectedDateSteps').text('N/A');
-            }
-        });
+    $('#datepicker').datepicker({
+        format: 'yyyy-mm-dd',
+        autoclose: true,
+        todayHighlight: true,
+        weekStart: 1
+    }).on('changeDate', function(e) {
+        var startDate = new Date(e.date);
+        var endDate = new Date(e.date);
+        endDate.setDate(endDate.getDate() + 6);
+        loadChartData(startDate, endDate);
     });
 });
+
+function loadChartData(startDate, endDate) {
+    $.getJSON('example.json', function(data) {
+        var stepsData = [];
+        var labels = [];
+        for (var i = 0; i < data.length; i++) {
+            var date = new Date(data[i].date);
+            if (date >= startDate && date <= endDate) {
+                stepsData.push(data[i].steps);
+                labels.push(data[i].date);
+            }
+        }
+        displayChart(stepsData, labels);
+    });
+}
+
+function displayChart(stepsData, labels) {
+    var ctx = document.getElementById('stepsChart').getContext('2d');
+    var stepsChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Steps',
+                data: stepsData,
+                borderColor: 'rgba(0, 123, 255, 1)',
+                backgroundColor: 'rgba(0, 123, 255, 0.1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+}
+
 
 /* 
 
