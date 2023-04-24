@@ -1,4 +1,4 @@
- $(function() {
+ /*$(function() {
             $('#datepicker').datepicker({
                 format: 'yyyy-mm-dd',
                 autoclose: true,
@@ -6,6 +6,75 @@
             });
         });
 
+*/
+$(function() {
+    $.getJSON('example.json', function(data) {
+        var stepData = [];
+        for (var i = 0; i < data.length; i++) {
+            var date = moment(data[i].date, 'YYYY-MM-DD');
+            var steps = data[i].steps;
+            stepData.push({x: date, y: steps});
+        }
+        var chartData = {
+            datasets: [{
+                label: 'Steps walked',
+                data: stepData,
+                borderColor: 'rgba(54, 162, 235, 1)',
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                pointRadius: 0
+            }]
+        };
+        var ctx = document.getElementById('stepChart').getContext('2d');
+        var stepChart = new Chart(ctx, {
+            type: 'line',
+            data: chartData,
+            options: {
+                scales: {
+                    xAxes: [{
+                        type: 'time',
+                        time: {
+                            displayFormats: {
+                                day: 'MMM D'
+                            }
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Date'
+                        }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Steps'
+                        }
+                    }]
+                }
+            }
+        });
+        $('#datepicker').datepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayHighlight: true
+        }).on('changeDate', function(e) {
+            var selectedDate = moment(e.date);
+            var selectedSteps = null;
+            for (var i = 0; i < stepData.length; i++) {
+                if (selectedDate.isSame(stepData[i].x, 'day')) {
+                    selectedSteps = stepData[i].y;
+                    break;
+                }
+            }
+            if (selectedSteps !== null) {
+                $('#selectedDateSteps').text(selectedSteps);
+            } else {
+                $('#selectedDateSteps').text('N/A');
+            }
+        });
+    });
+});
 
 /* 
 
