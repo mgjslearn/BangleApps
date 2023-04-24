@@ -1,17 +1,85 @@
+
+
 $(function() {
-    $('#datepicker').datepicker({
-        format: 'yyyy-mm-dd',
-        autoclose: true,
-        todayHighlight: true,
-        weekStart: 1
-    }).on('changeDate', function(e) {
-        var startDate = new Date(e.date);
-        var endDate = new Date(e.date);
-        endDate.setDate(endDate.getDate() + 6);
-        loadChartData(startDate, endDate);
+  $('#datepicker').datepicker({
+    format: 'yyyy-mm-dd',
+    autoclose: true,
+    todayHighlight: true,
+    multidate: true,
+    multidateSeparator: " - ",
+    endDate: new Date()
+  }).on('changeDate', function() {
+    var selectedDates = $('#datepicker').val().split(' - ');
+    var startDate = new Date(selectedDates[0]);
+    var endDate = new Date(selectedDates[1]);
+
+    $.getJSON('example.json', function(data) {
+      var chartData = [];
+      var totalSteps = 0;
+      var numDays = 0;
+
+      for (var i = 0; i < data.activityData.length; i++) {
+        var date = new Date(data.activityData[i].date);
+        if (date >= startDate && date <= endDate) {
+          var steps = data.activityData[i].steps;
+          totalSteps += steps;
+          numDays++;
+
+          chartData.push({
+            x: date,
+            y: steps
+          });
+        }
+      }
+
+      var avgSteps = totalSteps / numDays;
+
+      var chart = new CanvasJS.Chart("chartContainer", {
+        animationEnabled: true,
+        theme: "light2",
+        title:{
+          text: "Steps Walked Over the Week"
+        },
+        axisY: {
+          title: "Steps",
+          includeZero: false
+        },
+        data: [{
+          type: "line",
+          dataPoints: chartData
+        }]
+      });
+
+      chart.render();
+
+      var chart2 = new CanvasJS.Chart("chartContainer2", {
+        animationEnabled: true,
+        theme: "light2",
+        title:{
+          text: "Steps Walked per Day"
+        },
+        axisX: {
+          title: "Date"
+        },
+        axisY: {
+          title: "Steps",
+          includeZero: false
+        },
+        data: [{
+          type: "column",
+          dataPoints: chartData
+        }]
+      });
+
+      chart2.render();
+
+      $('#avgSteps').text(avgSteps);
     });
+  });
 });
 
+
+/*
 function loadChartData(startDate, endDate) {
     $.getJSON('example.json', function(data) {
         var stepsData = [];
@@ -52,7 +120,7 @@ function displayChart(stepsData, labels) {
         }
     });
 }
-
+*/
 
 /* 
 
