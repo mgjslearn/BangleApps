@@ -185,18 +185,22 @@
             </div>
           </div>
 	</div>
-        <div class = "row">	
-         <!--Activity stats graph-->  
-             <h3>Activity Graph</h3> 
-           <div class="col-md-12 card"> 
-               <div class="card-body">
-                <div class="form-group">
-                    <label for="datepicker">Select Date:</label>
-                    <input type="text" id="datepicker" class="form-control">
-                </div>
-            </div>
-          </div>
-   	</div>   
+        <div class="row">
+    <!-- Activity stats graph -->
+	    <h3>Activity Graph</h3>
+	    <div class="col-md-12 card">
+		<div class="card-body">
+		    <div class="form-group">
+			<label for="datepicker">Select Date:</label>
+			<input type="text" id="datepicker" class="form-control">
+		    </div>
+		    <div class="graph-container">
+			<canvas id="stepChart"></canvas>
+		    </div>
+		</div>
+	    </div>
+	</div>
+  
         <!--survey results table-->
        <div class="row">
         <div class="container">
