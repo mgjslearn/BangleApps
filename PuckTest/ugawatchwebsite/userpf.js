@@ -1,3 +1,12 @@
+ $(function() {
+            $('#datepicker').datepicker({
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                todayHighlight: true
+            });
+        });
+
+
 /* 
 
       $(function() {
@@ -35,7 +44,7 @@
         var chart = new ApexCharts(document.querySelector("#activity-graph"), options);
         chart.render();
       }); */
-
+/*
 // Hard-coded example data for steps walked
 const stepsData = {
     "2023-04-01": 5000,
@@ -45,8 +54,8 @@ const stepsData = {
     "2023-04-05": 8000,
     "2023-04-06": 10000,
     "2023-04-07": 12000
-};
-
+};*/
+/*
 // Function to generate the activity line graph
 function generateActivityGraph(startDate, endDate) {
     // Filter the steps data based on the selected date range
@@ -101,4 +110,4 @@ $(document).ready(function() {
     // Generate the initial graph
     generateActivityGraph('2023-04-01', '2023-04-07');
 });
-
+*/
