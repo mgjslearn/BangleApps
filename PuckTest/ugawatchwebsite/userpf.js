@@ -1,4 +1,4 @@
- /*$(function() {
+ $(function() {
             $('#datepicker').datepicker({
                 format: 'yyyy-mm-dd',
                 autoclose: true,
@@ -6,7 +6,7 @@
             });
         });
 
-*/
+
 $(function() {
     $.getJSON('example.json', function(data) {
         var stepData = [];
