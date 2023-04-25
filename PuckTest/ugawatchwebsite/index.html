@@ -11,18 +11,36 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-<!-- import jQuery library -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+  <!-- import jQuery library -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<!-- import Chart.js library -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- import Chart.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<!-- Morris.js library -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.4/raphael-min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+  <!-- Morris.js library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.4/raphael-min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 
-<!-- Moment.js library -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <!-- Moment.js library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <!-- Import jQuery library -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Import Bootstrap library -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <!-- Import Moment.js library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+  <!-- Import Morris.js library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+	 
 
 	  <script src="userpf.js"></script>
  </head>
@@ -199,21 +217,22 @@
             <div class="col-3">
             </div>
           </div>
-	</div>		
-	
+	</div>	
+	       
 	 <div class="row">
-	  <!-- Activity stats graph -->
-	  <h3>Activity Graph</h3>
-	  <div class="col-md-12 card">
-	    <div class="card-body">
-	      <div class="form-group">
-		<label for="datepicker">Select The Date Range:</label>
-		<input type="text" id="datepicker" class="form-control">
-	      </div>
-	      <div id="stepsChart"></div>
-	    </div>
-	  </div>
-	</div>
+            <!--Activity stats graph-->
+            <h3>Activity Graph</h3>
+            <div class="col-md-12 card">
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="datepicker">Select Date:</label>
+                  <input type="text" id="datepicker" class="form-control">
+                </div>
+                <div id="activity-chart"></div>
+              </div>
+            </div>
+          </div>
+
 
       <!--survey results table-->
        <div class="row">
