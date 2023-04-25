@@ -1,5 +1,58 @@
 
 $(function() {
+  // Load data from JSON file
+  $.getJSON("example.json", function(data) {
+    // Create chart data array from activity data
+    var chartData = [];
+    for (var i = 0; i < data.activityData.length; i++) {
+      chartData.push({
+        date: new Date(data.activityData[i].date),
+        steps: data.activityData[i].steps
+      });
+    }
+
+    // Initialize chart with initial data
+    var chart = new Morris.Line({
+      element: 'stepsChart',
+      data: chartData,
+      xkey: 'date',
+      ykeys: ['steps'],
+      labels: ['Steps'],
+      hideHover: 'auto',
+      ymin: 0,
+      postUnits: ' steps',
+      dateFormat: function(date) {
+        return moment(date).format('MMM D');
+      },
+      barColors: function(row) {
+        var colors = ['#8bc34a', '#9c27b0', '#ff5722', '#00bcd4', '#e91e63', '#795548', '#607d8b'];
+        return colors[row.x % colors.length];
+      }
+    });
+
+    // Update chart with selected date range
+    $('#datepicker').datepicker({
+      format: 'yyyy-mm-dd',
+      autoclose: true,
+      todayHighlight: true,
+      multidate: true,
+      multidateSeparator: " - ",
+      endDate: '+0d'
+    }).on('changeDate', function(e) {
+      if (e.dates.length == 2) {
+        // Filter data for selected date range
+        var filteredData = chartData.filter(function(data) {
+          return data.date >= e.dates[0] && data.date <= e.dates[1];
+        });
+
+        // Redraw chart with filtered data
+        chart.setData(filteredData);
+      }
+    });
+  });
+});
+
+/*$(function() {
     $('#datepicker').datepicker({
         format: 'yyyy-mm-dd',
         autoclose: true,
@@ -7,102 +60,8 @@ $(function() {
         multidate: true,
         multidateSeparator: " - "
     });
-});
-
-/*$(function() {
-  $('#datepicker').datepicker({
-    format: 'yyyy-mm-dd',
-    autoclose: true,
-    todayHighlight: true,
-    multidate: true,
-    multidateSeparator: " - ",
-    endDate: new Date()
-  }).on('changeDate', function() {
-    var selectedDates = $('#datepicker').val().split(' - ');
-    var startDate = new Date(selectedDates[0]);
-    var endDate = new Date(selectedDates[1]);
-
-    $.getJSON('example.json', function(data) {
-      var chartData = [];
-      var totalSteps = 0;
-      var numDays = 0;
-
-      for (var i = 0; i < data.activityData.length; i++) {
-        var date = new Date(data.activityData[i].date);
-        if (date >= startDate && date <= endDate) {
-          var steps = data.activityData[i].steps;
-          totalSteps += steps;
-          numDays++;
-
-          chartData.push({
-            x: date,
-            y: steps
-          });
-        }
-      }
-
-      var avgSteps = totalSteps / numDays;
-
-      var chart = new CanvasJS.Chart("chartContainer", {
-        animationEnabled: true,
-        theme: "light2",
-        title:{
-          text: "Steps Walked Over the Week"
-        },
-        axisY: {
-          title: "Steps",
-          includeZero: false
-        },
-        data: [{
-          type: "line",
-          dataPoints: chartData
-        }]
-      });
-
-      chart.render();
-
-      var chart2 = new CanvasJS.Chart("chartContainer2", {
-        animationEnabled: true,
-        theme: "light2",
-        title:{
-          text: "Steps Walked per Day"
-        },
-        axisX: {
-          title: "Date"
-        },
-        axisY: {
-          title: "Steps",
-          includeZero: false
-        },
-        data: [{
-          type: "column",
-          dataPoints: chartData
-        }]
-      });
-
-      chart2.render();
-
-      $('#avgSteps').text(avgSteps);
-    });
-  });
-});
-*/
-
+}); */
 /*
-function loadChartData(startDate, endDate) {
-    $.getJSON('example.json', function(data) {
-        var stepsData = [];
-        var labels = [];
-        for (var i = 0; i < data.length; i++) {
-            var date = new Date(data[i].date);
-            if (date >= startDate && date <= endDate) {
-                stepsData.push(data[i].steps);
-                labels.push(data[i].date);
-            }
-        }
-        displayChart(stepsData, labels);
-    });
-}
 
 function displayChart(stepsData, labels) {
     var ctx = document.getElementById('stepsChart').getContext('2d');
