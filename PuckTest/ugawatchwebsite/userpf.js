@@ -1,55 +1,57 @@
 
 $(function() {
-  // Load data from JSON file
-  $.getJSON("example.json", function(data) {
-    // Create chart data array from activity data
-    var chartData = [];
-    for (var i = 0; i < data.activityData.length; i++) {
-      chartData.push({
-        date: new Date(data.activityData[i].date),
-        steps: data.activityData[i].steps
-      });
-    }
+    // load the example JSON file
+    $.getJSON("example.json", function(data) {
+        // create a variable to hold the activity data
+        var activityData = [];
 
-    // Initialize chart with initial data
-    var chart = new Morris.Line({
-      element: 'stepsChart',
-      data: chartData,
-      xkey: 'date',
-      ykeys: ['steps'],
-      labels: ['Steps'],
-      hideHover: 'auto',
-      ymin: 0,
-      postUnits: ' steps',
-      dateFormat: function(date) {
-        return moment(date).format('MMM D');
-      },
-      barColors: function(row) {
-        var colors = ['#8bc34a', '#9c27b0', '#ff5722', '#00bcd4', '#e91e63', '#795548', '#607d8b'];
-        return colors[row.x % colors.length];
-      }
-    });
-
-    // Update chart with selected date range
-    $('#datepicker').datepicker({
-      format: 'yyyy-mm-dd',
-      autoclose: true,
-      todayHighlight: true,
-      multidate: true,
-      multidateSeparator: " - ",
-      endDate: '+0d'
-    }).on('changeDate', function(e) {
-      if (e.dates.length == 2) {
-        // Filter data for selected date range
-        var filteredData = chartData.filter(function(data) {
-          return data.date >= e.dates[0] && data.date <= e.dates[1];
+        // loop through the data and format it for the Morris.js graph
+        $.each(data.activityData, function(index, value) {
+            var date = moment(value.date).format('ddd');
+            activityData.push({ day: date, steps: value.steps });
         });
 
-        // Redraw chart with filtered data
-        chart.setData(filteredData);
-      }
+        // initialize the Morris.js graph
+        Morris.Bar({
+            element: 'activity-chart',
+            data: activityData,
+            xkey: 'day',
+            ykeys: ['steps'],
+            labels: ['Steps'],
+            barColors: ['#67b7dc'],
+            hideHover: 'auto'
+        });
+
+        // initialize the datepicker
+        $('#datepicker').datepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayHighlight: true,
+            multidate: true,
+            multidateSeparator: " - ",
+            // update the graph when the date range is changed
+            onChangeDate: function() {
+                var selectedDates = $('#datepicker').val().split(' - ');
+                var filteredData = data.activityData.filter(function(value) {
+                    return moment(value.date).isBetween(selectedDates[0], selectedDates[1], null, '[]');
+                });
+                var updatedData = [];
+                $.each(filteredData, function(index, value) {
+                    var date = moment(value.date).format('ddd');
+                    updatedData.push({ day: date, steps: value.steps });
+                });
+                Morris.Bar({
+                    element: 'activity-chart',
+                    data: updatedData,
+                    xkey: 'day',
+                    ykeys: ['steps'],
+                    labels: ['Steps'],
+                    barColors: ['#67b7dc'],
+                    hideHover: 'auto'
+                });
+            }
+        });
     });
-  });
 });
 
 /*$(function() {
