@@ -1,6 +1,15 @@
 
-
 $(function() {
+    $('#datepicker').datepicker({
+        format: 'yyyy-mm-dd',
+        autoclose: true,
+        todayHighlight: true,
+        multidate: true,
+        multidateSeparator: " - "
+    });
+});
+
+/*$(function() {
   $('#datepicker').datepicker({
     format: 'yyyy-mm-dd',
     autoclose: true,
@@ -77,7 +86,7 @@ $(function() {
     });
   });
 });
-
+*/
 
 /*
 function loadChartData(startDate, endDate) {
